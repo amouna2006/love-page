@@ -1,0 +1,60 @@
+
+to {
+        transform: translateY(-10vh);
+        opacity: 0;
+      }
+    }
+
+    @media (max-width: 600px) {
+      h1 { font-size: 1.5rem; }
+      .teddy { font-size: 90px; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <div class="teddy">🧸</div>
+  <h1>WASH KATBGHINI?</h1>
+<div class="buttons">
+    <button class="yes" onclick="showLove()">AH</button>
+    <button class="no" id="noBtn">LA</button>
+  </div>
+
+  <div class="message" id="message">ANA TANGHIK BZZEF ❤️</div>
+</div>
+
+<script>
+  const noBtn = document.getElementById('noBtn');
+
+  noBtn.addEventListener('mouseover', () => {
+    const x = Math.random() * (window.innerWidth - noBtn.offsetWidth);
+    const y = Math.random() * (window.innerHeight - noBtn.offsetHeight);function showLove() {
+    document.getElementById('message').classList.add('show');
+  }
+
+  // Create floating hearts
+  function createHeart() {
+    const heart = document.createElement('div');
+    heart.classList.add('heart');
+    heart.innerHTML = '❤';
+
+    heart.style.left = Math.random() * 100 + 'vw';
+    heart.style.fontSize = Math.random() * 20 + 10 + 'px';
+
+    document.body.appendChild(heart);
+
+    setTimeout(() => {
+      heart.remove();
+    }, 5000);
+  }
+setInterval(createHeart, 300);
+</script>
+
+</body>
+</html>
+
+
+    noBtn.style.left = x + 'px';
+    noBtn.style.top = y + 'px';
+  });
