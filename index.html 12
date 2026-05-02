@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cute Love Page</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Arial', sans-serif;
+    }
+
+    body {
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background: linear-gradient(135deg, #ffd1dc, #ffc0cb);
+      overflow: hidden;
+    }
+
+    .container {
+      text-align: center;
+      position: relative;
+    }
+
+    h1 {
+      color: #d63384;
+      margin-bottom: 20px;
+      font-size: 2rem;
+    }
+
+    .teddy {
+      font-size: 120px;
+      animation: float 3s ease-in-out infinite;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0); }
+      50% { transform: translateY(-20px); }
+    }
+
+    .buttons {
+      margin-top: 20px;
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    button {
+      padding: 12px 25px;
+      border: none;
+      cursor: pointer;
+      font-size: 1rem;
+      border-radius: 30px;
+      transition: all 0.3s ease;
+      position: relative;
+    }
+
+    .yes {
+      background: linear-gradient(45deg, #ff69b4, #ff1493);
+      color: white;
+    }
+
+    .yes:hover {
+      transform: scale(1.1);
+    }
+
+    .no {
+      background: transparent;
+      border: 2px solid #ff69b4;
+      color: #ff1493;
+      position: absolute;
+    }
+
+    .message {
+      margin-top: 20px;
+      font-size: 1.5rem;
+      color: #c2185b;
+      opacity: 0;
+      transition: opacity 0.5s ease;
+    }
+
+    .show {
+      opacity: 1;
+    }
+
+    /* Floating hearts */
+    .heart {
+      position: absolute;
+      color: #ff69b4;
+      animation: rise 5s linear infinite;
+      font-size: 20px;
+    }
+
+    @keyframes rise {
+      from {
+        transform: translateY(100vh);
+        opacity: 1;
+      }
+      to {
+        transform: translateY(-10vh);
+        opacity: 0;
+      }
+    }
+
+    @media (max-width: 600px) {
+      h1 { font-size: 1.5rem; }
+      .teddy { font-size: 90px; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <div class="teddy">🧸</div>
+  <h1>WASH KATBGHINI?</h1>
+
+  <div class="buttons">
+    <button class="yes" onclick="showLove()">AH</button>
+    <button class="no" id="noBtn">LA</button>
+  </div>
+
+  <div class="message" id="message">ANA TANGHIK BZZEF ❤️</div>
+</div>
+
+<script>
+  const noBtn = document.getElementById('noBtn');
+
+  noBtn.addEventListener('mouseover', () => {
+    const x = Math.random() * (window.innerWidth - noBtn.offsetWidth);
+    const y = Math.random() * (window.innerHeight - noBtn.offsetHeight);
+
+    noBtn.style.left = x + 'px';
+    noBtn.style.top = y + 'px';
+  });
+
+  function showLove() {
+    document.getElementById('message').classList.add('show');
+  }
+
+  // Create floating hearts
+  function createHeart() {
+    const heart = document.createElement('div');
+    heart.classList.add('heart');
+    heart.innerHTML = '❤';
+
+    heart.style.left = Math.random() * 100 + 'vw';
+    heart.style.fontSize = Math.random() * 20 + 10 + 'px';
+
+    document.body.appendChild(heart);
+
+    setTimeout(() => {
+      heart.remove();
+    }, 5000);
+  }
+
+  setInterval(createHeart, 300);
+</script>
+
+</body>
+</html>
